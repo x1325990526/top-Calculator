@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <p class="display">512</p>
+
+    <div class="calculator">
+
+
+        
+        <div class="number">
+            <button id="one">1</button>
+            <button id="two">2</button>
+            <button id="three">3</button>
+            <button id="four">4</button>
+            <button id="five">5</button>
+            <button id="six">6</button>
+            <button id="seven">7</button>
+            <button id="eight">8</button>
+            <button id="nine">9</button>
+            <button id="zero">0</button>
+
+        </div>
+
+        <div class="operator">
+            <button id="a">+</button>
+            <button id="s">-</button>
+            <button id="m">*</button>
+            <button id="d">/</button>
+        </div>
+
+        <!-- <button id="clear">clear</button> -->
+
+
+    </div>
+    
+
+    <script>
+        function add(a, b){
+            return a + b;
+        }
+
+        function subtract(a, b){
+            return a - b;
+        }
+
+        function multiply(a, b){
+            return a * b;
+        }
+
+        function divide(a, b){
+            return a / b;
+        }
+
+        function operate(operator, num1, num2){
+            switch(operator){
+
+                case "add":
+                    return add(num1, num2);
+                case "subtract":
+                    return subtract(num1, num2);
+                case "multiply":
+                    return multiply(num1, num2);
+                case "divide":
+                    return divide(num1, num2);
+                default:
+                    return 0;
+            }
+
+        }
+    </script>
+</body>
+</html>

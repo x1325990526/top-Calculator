@@ -32,11 +32,11 @@
         </div>
 
         <div class="operator">
-            <button id="a">+</button>
-            <button id="s">-</button>
-            <button id="m">*</button>
-            <button id="d">/</button>
-            <button id="e">=</button>
+            <button class="opt-btn">+</button>
+            <button class="opt-btn">-</button>
+            <button class="opt-btn">*</button>
+            <button class="opt-btn">/</button>
+            <button class="equal-btn">=</button>
         </div>
 
         
@@ -46,26 +46,47 @@
     
 
     <script>
-
+        const calculator = document.querySelector(".calculator");
         const display = document.querySelector(".display");
         const number = document.querySelector(".number");
         const operator = document.querySelector(".operator");
 
-        let num1 = 0;
-        let num2 = 0;
-        let result = 0;
-        let op = '';
+        let num1 = null;
+        let num2 = null;
+        let result = null;
+        let opt = '';
 
-        number.addEventListener('click', (e) =>{
+        calculator.addEventListener('click', (e) => {
             if(e.target.classList.contains('num-btn')){
                 display.textContent += e.target.textContent;
+
+               
             }
 
             if(e.target.classList.contains('ac-btn')){
                 display.textContent = '';
             }
-        });
 
+            if(e.target.classList.contains('opt-btn')){
+
+                if(!num1 && !num2 && !opt){
+                num1 = +display.textContent;
+                opt = e.target.textContent;
+                display.textContent = '';
+                }
+
+
+            }
+
+            if(e.target.classList.contains('equal-btn')){
+
+                num2 = display.textContent;
+                result = operate(opt, num1, num2);
+                display.textContent = result;
+            
+            }
+            
+        });
 
 
 

@@ -81,7 +81,11 @@
             if(e.target.classList.contains('opt-btn')){
 
                 if(!num1 && !num2 && !opt){
-                num1 = +display.textContent;
+                const raw = display.textContent;
+                num1 = parseFloat(raw);
+
+                if(isNaN(num1)) return;
+
                 opt = e.target.textContent;
                 display.textContent = '';
                 }
@@ -91,7 +95,11 @@
 
             if(e.target.classList.contains('equal-btn')){
 
-                num2 = +display.textContent;
+                const raw = display.textContent;
+                num2 = parseFloat(raw);
+
+                if(isNaN(num2)) return;
+                
                 result = operate(opt, num1, num2);
                 display.textContent = result;
             

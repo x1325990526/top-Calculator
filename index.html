@@ -55,9 +55,16 @@
         let num2 = null;
         let result = null;
         let opt = '';
+        let shouldResetDisplay = true;
 
         calculator.addEventListener('click', (e) => {
             if(e.target.classList.contains('num-btn')){
+
+                if(shouldResetDisplay){
+                    display.textContent = '';
+                    shouldResetDisplay = false;
+                }
+
                 display.textContent += e.target.textContent;
 
                
@@ -65,15 +72,13 @@
 
             if(e.target.classList.contains('ac-btn')){
                 display.textContent = '';
+                shouldResetDisplay =false;
                 num1 = null;
                 num2 = null;
                 opt = '';
                 result = 0;
             }
 
-
-
-            
             
         });
 
@@ -81,13 +86,13 @@
             if(e.target.classList.contains('opt-btn')){
 
                 if(!num1 && !num2 && !opt){
-                const raw = display.textContent;
-                num1 = parseFloat(raw);
 
-                if(isNaN(num1)) return;
+                    num1 = parseFloat(display.textContent);
 
-                opt = e.target.textContent;
-                display.textContent = '';
+                    
+                    opt = e.target.textContent;
+                    
+                    shouldResetDisplay = true;
                 }
 
 

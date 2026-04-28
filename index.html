@@ -65,8 +65,19 @@
 
             if(e.target.classList.contains('ac-btn')){
                 display.textContent = '';
+                num1 = null;
+                num2 = null;
+                opt = '';
+                result = 0;
             }
 
+
+
+            
+            
+        });
+
+        operator.addEventListener('click', (e) => {
             if(e.target.classList.contains('opt-btn')){
 
                 if(!num1 && !num2 && !opt){
@@ -80,15 +91,12 @@
 
             if(e.target.classList.contains('equal-btn')){
 
-                num2 = display.textContent;
+                num2 = +display.textContent;
                 result = operate(opt, num1, num2);
                 display.textContent = result;
             
-            }
-            
-        });
-
-
+            }                
+        })
 
 
 

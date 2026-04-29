@@ -87,7 +87,7 @@
 
                 if(!num1 && !num2 && !opt){
 
-                    num1 = parseFloat(display.textContent);
+                    num1 = toNumber(display.textContent);
 
                     
                     opt = e.target.textContent;
@@ -95,24 +95,42 @@
                     shouldResetDisplay = true;
                 }
 
+                if(num1 && num2 && opt){
+
+                    operator = e.target.textContent;
+                    result 
+                    shouldResetDisplay = true;
+
+
+                }
+
 
             }
 
             if(e.target.classList.contains('equal-btn')){
 
-                const raw = display.textContent;
-                num2 = parseFloat(raw);
+                num2 = toNumber(display.textContent);
 
-                if(isNaN(num2)) return;
                 
                 result = operate(opt, num1, num2);
                 display.textContent = result;
+                shouldResetDisplay =true;
+                num1 = null;
+                num2 = null;
+                opt = '';
             
             }                
         })
 
 
+        function toNumber(str){
+            let num = parseFloat(str);
 
+            return isNaN(num) ? null : num;
+            
+            
+
+        }
 
 
 

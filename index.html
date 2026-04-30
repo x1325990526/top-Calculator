@@ -57,7 +57,8 @@
         let opt = '';
         let shouldResetDisplay = true;
 
-        calculator.addEventListener('click', (e) => {
+
+        number.addEventListener('click', (e) => {
             if(e.target.classList.contains('num-btn')){
 
                 if(shouldResetDisplay){
@@ -85,6 +86,35 @@
         operator.addEventListener('click', (e) => {
             if(e.target.classList.contains('opt-btn')){
 
+                if((num1 && num2 && opt) || (num1 && !num2 && opt)){
+
+                    num2 = toNumber(display.textContent);
+                    num1 = operate(opt, num1, num2);
+
+                    opt = e.target.textContent;
+
+
+                    display.textContent = num1;
+
+
+                    shouldResetDisplay = true;
+
+
+                }
+
+                // if(num1 && !num2 && opt ){
+
+                //     num2 = toNumber(display.textContent);
+
+                //     num1 = operate(opt, num1, num2);
+
+                //     opt = e.target.textContent;
+                    
+                //     display.textContent = num1;
+                    
+                //     shouldResetDisplay = true;
+                // }
+
                 if(!num1 && !num2 && !opt){
 
                     num1 = toNumber(display.textContent);
@@ -95,30 +125,32 @@
                     shouldResetDisplay = true;
                 }
 
-                if(num1 && num2 && opt){
 
-                    operator = e.target.textContent;
-                    result 
-                    shouldResetDisplay = true;
-
-
-                }
 
 
             }
 
             if(e.target.classList.contains('equal-btn')){
+                if((num1 && !num2 && opt) || (num1 && num2 && opt)){
+                    
+                    num2 = toNumber(display.textContent);
 
-                num2 = toNumber(display.textContent);
+                    
+                    num1 = operate(opt, num1, num2);
+                    display.textContent = num1;
+                    shouldResetDisplay =true;
+                    num2 = null;
+                    opt = '';
+                }
 
-                
-                result = operate(opt, num1, num2);
-                display.textContent = result;
-                shouldResetDisplay =true;
-                num1 = null;
-                num2 = null;
-                opt = '';
-            
+                // if(num1 && num2 && opt){
+                    
+                //     num1 = operate(opt, num1, num2);
+                //     display.textContent = num1;
+                //     shouldResetDisplay =true;
+                //     num2 = null;
+                //     opt = '';
+                // }
             }                
         })
 
@@ -126,6 +158,7 @@
         function toNumber(str){
             let num = parseFloat(str);
 
+            // NaN === NaN is always false,Because NaN is not equal anything,including itself 
             return isNaN(num) ? null : num;
             
             

@@ -86,7 +86,10 @@
         operator.addEventListener('click', (e) => {
             if(e.target.classList.contains('opt-btn')){
 
-                if((num1 && num2 && opt) || (num1 && !num2 && opt)){
+                if(shouldResetDisplay){
+                    opt = e.target.textContent;
+
+                }else if((num1 && num2 && opt) || (num1 && !num2 && opt) ){
 
                     num2 = toNumber(display.textContent);
                     num1 = operate(opt, num1, num2);
@@ -100,22 +103,7 @@
                     shouldResetDisplay = true;
 
 
-                }
-
-                // if(num1 && !num2 && opt ){
-
-                //     num2 = toNumber(display.textContent);
-
-                //     num1 = operate(opt, num1, num2);
-
-                //     opt = e.target.textContent;
-                    
-                //     display.textContent = num1;
-                    
-                //     shouldResetDisplay = true;
-                // }
-
-                if(!num1 && !num2 && !opt){
+                }else if(!num1 && !num2 && !opt){
 
                     num1 = toNumber(display.textContent);
 
@@ -143,14 +131,7 @@
                     opt = '';
                 }
 
-                // if(num1 && num2 && opt){
-                    
-                //     num1 = operate(opt, num1, num2);
-                //     display.textContent = num1;
-                //     shouldResetDisplay =true;
-                //     num2 = null;
-                //     opt = '';
-                // }
+
             }                
         })
 
@@ -172,6 +153,7 @@
         }
 
         function subtract(a, b){
+            
             return a - b;
         }
 
@@ -180,6 +162,7 @@
         }
 
         function divide(a, b){
+            
             return a / b;
         }
 

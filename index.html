@@ -25,7 +25,7 @@
             <button class="num-btn">9</button>
             <button class="ac-btn">AC</button>
             <button class="num-btn">0</button>
-            <button class="num-btn">.</button>
+            <button class="num-btn dot-btn">.</button>
             
             
 
@@ -50,12 +50,14 @@
         const display = document.querySelector(".display");
         const number = document.querySelector(".number");
         const operator = document.querySelector(".operator");
+        const dotBtn = document.querySelector('.dot-btn');
 
         let num1 = null;
         let num2 = null;
         let result = null;
         let opt = '';
         let shouldResetDisplay = true;
+        
 
 
         number.addEventListener('click', (e) => {
@@ -64,9 +66,11 @@
                 if(shouldResetDisplay){
                     display.textContent = '';
                     shouldResetDisplay = false;
+                    dotBtn.disabled = false;
                 }
 
                 display.textContent += e.target.textContent;
+                updateDotBtn();
 
                
             }
@@ -74,6 +78,7 @@
             if(e.target.classList.contains('ac-btn')){
                 display.textContent = '';
                 shouldResetDisplay =false;
+                dotBtn.disabled = false;
                 num1 = null;
                 num2 = null;
                 opt = '';
@@ -146,6 +151,10 @@
             
             
 
+        }
+
+        function updateDotBtn() {
+            dotBtn.disabled = display.textContent.includes('.');
         }
 
 

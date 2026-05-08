@@ -86,10 +86,12 @@
         operator.addEventListener('click', (e) => {
             if(e.target.classList.contains('opt-btn')){
 
+
+                //when user press opt-btn, but not input new number
                 if(shouldResetDisplay){
                     opt = e.target.textContent;
 
-                }else if((num1 && num2 && opt) || (num1 && !num2 && opt) ){
+                }else if(num1 && opt){
 
                     num2 = toNumber(display.textContent);
                     num1 = operate(opt, num1, num2);
@@ -103,7 +105,7 @@
                     shouldResetDisplay = true;
 
 
-                }else if(!num1 && !num2 && !opt){
+                }else if(!num1 && !opt){
 
                     num1 = toNumber(display.textContent);
 
@@ -119,7 +121,7 @@
             }
 
             if(e.target.classList.contains('equal-btn')){
-                if((num1 && !num2 && opt) || (num1 && num2 && opt)){
+                if((num1 && opt && !shouldResetDisplay)){
                     
                     num2 = toNumber(display.textContent);
 

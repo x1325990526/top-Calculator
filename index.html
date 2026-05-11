@@ -59,7 +59,35 @@
         let opt = '';
         let shouldResetDisplay = true;
         
+        document.addEventListener('keydown', (e) =>{
 
+            //find 1-9 and dot
+            if('0123456789.'.includes(e.key)){
+
+                const btn = [...document.querySelectorAll('.num-btn')]
+                                .find(b => b.textContent === e.key);
+                if(btn) btn.click();
+            }
+
+            if(['+','-','*','/'].includes(e.key)){
+                const opt = [...document.querySelectorAll('.opt-btn')]
+                                .find(p => p.textContent === e.key);
+                if(opt) opt.click();                                
+            }
+
+            if(e.key === 'enter' || e.key === '='){
+                document.querySelector('.equal-btn').click();
+            }
+
+            if(e.key === 'Backspace'){
+                document.querySelector('.bs-btn').click();
+            }
+
+            if(e.key === 'Escape'){
+                document.querySelector('.ac-btn').click();
+            }
+
+        });
 
         number.addEventListener('click', (e) => {
             if(e.target.classList.contains('num-btn')){

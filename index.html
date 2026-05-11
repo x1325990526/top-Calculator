@@ -103,8 +103,7 @@
                 if(shouldResetDisplay){
                     opt = e.target.textContent;
 
-                }
-                if(num1 && opt){
+                }else if(num1 && opt){
 
                     num2 = toNumber(display.textContent);
                     num1 = operate(opt, num1, num2);

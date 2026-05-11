@@ -26,6 +26,7 @@
             <button class="ac-btn">AC</button>
             <button class="num-btn">0</button>
             <button class="num-btn dot-btn">.</button>
+            <button class="bs-btn">BS</button>
             
             
 
@@ -83,6 +84,11 @@
                 num2 = null;
                 opt = '';
                 result = 0;
+            }
+
+            if(e.target.classList.contains('bs-btn')){
+                display.textContent = display.textContent.slice(0,-1);
+                
             }
 
             
